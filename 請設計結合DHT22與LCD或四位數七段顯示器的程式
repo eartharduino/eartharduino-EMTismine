@@ -1,14 +1,5 @@
 請運用DHT22+LCD或四數位七段顯示器(兩者選一)，設計程式，讓溫度(攝氏)及相對溼度資料在顯示器上呈現。
 完成期限：108年10月30日
-/*  Lab8 LCD 程式碼*/
-
-/*以下為註解
-LCD 接線方式
-GND --> GND
-VCC --> 5V
-SDA --> A4
-SCL --> A5
-*/
 #include "DHT.h"        // 匯入DHT函式庫
 #define DHTPIN 2        // 定義DHT函式庫中，所使用的訊號來源
 #define DHTTYPE DHT22   // 定義DHT函式庫中，所使用的感測器
@@ -32,11 +23,17 @@ void loop()
 {
   delay(200);
   float dhtT = dht.readTemperature();    //設定浮點變數dhtT，讀取溫度
+  float dhtH = dht.readHumidity();
   lcd.home();   //LCD歸零，清除所有內容
   lcd.clear();  //LCD歸零，清除所有內容
-
-  lcd.setCursor(0, 0);        // 設定游標位置在第一行第一個字
-  lcd.print("Temperature"); //LCD顯示" "內的文字
-  lcd.setCursor(0, 1);        // 設定游標位置在第二行第一個字
-  lcd.print(dhtT);               //LCD顯示x的內容
+ 
+  lcd.setCursor(0, 1);      
+  lcd.print("dhtH:");
+  lcd.setCursor(6,1);      
+  lcd.print(dhtH);
+  lcd.setCursor(0, 0);      
+  lcd.print("dhtT:");
+  lcd.setCursor(6, 0);        
+  lcd.print(dhtT);            
+ 
 }
