@@ -1,6 +1,27 @@
 請運用DHT22及RTC時鐘模組與SD卡模組，可將時間、溫度、濕度資料紀錄在SD卡檔案內。
 資料格式：日期，時分秒，溫度，濕度。
 完成期限：108年11月17日
+/*
+  SD card read/write
+
+ This example shows how to read and write data to and from an SD card file
+ The circuit:
+ * SD card attached to SPI bus as follows:
+ ** MOSI - pin 9
+ ** MISO - pin 10
+ ** CLK - pin 13
+ ** CS - pin 4 (for MKRZero SD: SDCARD_SS_PIN)
+
+ created   Nov 2010
+ by David A. Mellis
+ modified 9 Apr 2012
+ by Tom Igoe
+
+ This example code is in the public domain.
+
+ */
+
+
 #include <SPI.h>
 #include <SD.h>
 #include "DHT.h"        // 匯入DHT函式庫
@@ -31,14 +52,14 @@ void loop() {
 
   // open the file. note that only one file can be open at a time,
   // so you have to close this one before opening another.
-  myF = SD.open("clock.txt", FILE_WRITE);
+  myF = SD.open("LOLOLOLOL404207.txt", FILE_WRITE);
 
   // if the file opened okay, write to it:
   if (myF) {
-    Serial.print("Writing to clock.txt...");
+    Serial.print("Writing to LOLOLOLOL404207.txt...");
     myF.print(dhtT);
     myF.print(",");
-    myF.println("clock");
+    myF.println("LOLOLOLOL404207");
     i++;
     delay(1000);
     // close the file:
@@ -46,6 +67,6 @@ void loop() {
     Serial.println("done.");
   } else {
     // if the file didn't open, print an error:
-    Serial.println("error opening clock.txt");
+    Serial.println("error opening LOLOLOLOL404207.txt");
   }
 }
